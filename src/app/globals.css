@@ -1,0 +1,101 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600;1,700&family=Marcellus&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;0,800;0,900;1,600;1,700&family=Outfit:wght@500;600;700;800&family=Syne:wght@600;700;800&family=Prata&display=swap');
+@import "tailwindcss";
+
+:root {
+  --background: #020617;
+  --foreground: #f8fafc;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #020617;
+    --foreground: #f8fafc;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+  /* Firefox Scrollbar */
+  scrollbar-width: thin;
+  scrollbar-color: #d97706 #090e1a;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: 'Plus Jakarta Sans', var(--font-sans), sans-serif;
+}
+
+/* ==========================================================================
+   Luxury Law Theme Dark Scrollbar (WebKit / Chrome / Safari / Edge)
+   ========================================================================== */
+::-webkit-scrollbar {
+  width: 9px;
+  height: 9px;
+}
+
+::-webkit-scrollbar-track {
+  background: #090e1a;
+  border-left: 1px solid rgba(245, 158, 11, 0.15);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #d97706 0%, #92400e 100%);
+  border-radius: 9999px;
+  border: 2px solid #090e1a;
+  transition: all 0.2s ease-in-out;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #f59e0b 0%, #b45309 100%);
+  border: 1.5px solid #090e1a;
+}
+
+::-webkit-scrollbar-thumb:active {
+  background: #b45309;
+}
+
+/* Ultra-Premium Law Typography */
+.font-logo-brand {
+  font-family: 'Cormorant Garamond', 'Cinzel', 'Marcellus', 'Playfair Display', Georgia, serif;
+  font-feature-settings: "liga" 1, "dlig" 1;
+}
+
+.font-logo-sub {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+/* Distinctive Luxury Headings (Marcellus Roman Display) */
+.font-heading {
+  font-family: 'Marcellus', 'Plus Jakarta Sans', Georgia, serif;
+  letter-spacing: -0.01em;
+}
+
+/* Section Eyebrow Header Typography: Playfair Display */
+.font-eyebrow {
+  font-family: 'Playfair Display', Georgia, serif;
+  letter-spacing: 0.18em;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+/* Utilities */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+@keyframes scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-100%); }
+}
+.hide-scrollbar {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
