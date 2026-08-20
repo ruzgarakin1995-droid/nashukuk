@@ -2,6 +2,7 @@
 import React from "react";
 import Link from "next/link";
 import { Mail, Phone, MapPin } from "lucide-react";
+import { LanguageSwitcher } from "../components/LanguageSwitcher";
 
 export function Footer() {
   return (
@@ -84,10 +85,13 @@ export function Footer() {
           <p className="text-slate-500 text-xs sm:text-sm">
             © {new Date().getFullYear()} NAS Hukuk & Danışmanlık - Avukat Süleyman UĞUR. Tüm hakları saklıdır.
           </p>
-          <div className="flex gap-4 text-xs sm:text-sm text-slate-500">
+          <div className="flex flex-wrap items-center gap-4 text-xs sm:text-sm text-slate-500">
             <a href="#" className="hover:text-white transition-colors">Gizlilik Politikası</a>
             <a href="#" className="hover:text-white transition-colors">Kullanım Şartları</a>
             <a href="#" className="hover:text-white transition-colors">KVKK Aydınlatma Metni</a>
+            <div className="pl-2 border-l border-slate-800">
+              <LanguageSwitcher variant="topbar" />
+            </div>
           </div>
         </div>
       </div>

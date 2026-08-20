@@ -1,11 +1,11 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Script from "next/script";
 import { ChevronDown, Globe } from "lucide-react";
 
-// Supported languages and ISO flag codes (via flagcdn.com)
+// Dil listesi ve bayrak kodları (flagcdn.com destekli)
 const languages = [
   { code: "tr", label: "TR", title: "Türkçe", flag: "tr" },
   { code: "en", label: "EN", title: "English", flag: "gb" },
@@ -20,7 +20,7 @@ export function LanguageSwitcher({ variant = "default" }: { variant?: "default" 
   const [activeLang, setActiveLang] = useState("tr");
 
   useEffect(() => {
-    // Check existing Google Translate cookie on page load
+    // Sayfa yüklendiğinde mevcut çeviri çerezini kontrol et
     const match = document.cookie.match(/googtrans=\/tr\/([a-z]{2})/);
     if (match && match[1]) {
       setActiveLang(match[1]);
@@ -31,11 +31,11 @@ export function LanguageSwitcher({ variant = "default" }: { variant?: "default" 
     setActiveLang(lang);
     setLangDropdownOpen(false);
     
-    // Set Google Translate cookies
+    // Google Translate'in dil çerezini ayarla
     document.cookie = `googtrans=/tr/${lang}; path=/; domain=${window.location.hostname}`;
-    document.cookie = `googtrans=/tr/${lang}; path=/`; // Support localhost
+    document.cookie = `googtrans=/tr/${lang}; path=/`; // Localhost desteği için
     
-    // Reload page to trigger translate
+    // Çevirinin aktif olması için sayfayı yenile
     window.location.reload();
   };
 
@@ -44,7 +44,7 @@ export function LanguageSwitcher({ variant = "default" }: { variant?: "default" 
   return (
     <>
       <div className="relative inline-block text-left notranslate" translate="no">
-        {/* Trigger Button */}
+        {/* Ana Tetikleyici Buton */}
         <button 
           type="button"
           onClick={() => setLangDropdownOpen(!langDropdownOpen)}
@@ -72,11 +72,11 @@ export function LanguageSwitcher({ variant = "default" }: { variant?: "default" 
           <ChevronDown className={`w-3.5 h-3.5 text-slate-400 transition-transform duration-200 ${langDropdownOpen ? "rotate-180 text-amber-400" : ""}`} />
         </button>
 
-        {/* Dropdown Menu */}
+        {/* Açılır Menü */}
         <AnimatePresence>
           {langDropdownOpen && (
             <>
-              {/* Overlay for closing click outside */}
+              {/* Dışarı tıklandığında kapatmak için görünmez katman */}
               <div 
                 className="fixed inset-0 z-[9990]" 
                 onClick={() => setLangDropdownOpen(false)} 
@@ -125,10 +125,10 @@ export function LanguageSwitcher({ variant = "default" }: { variant?: "default" 
         </AnimatePresence>
       </div>
 
-      {/* Hidden Google Translate Hook */}
+      {/* Google Translate Entegrasyon Kodları (Gizli) */}
       <div id="google_translate_element" style={{ display: "none" }}></div>
       <style dangerouslySetInnerHTML={{__html: `
-        /* Hide default Google Translate top banner, tooltips & highlight styling */
+        /* Google Translate'in orijinal çirkin barını ve arayüzünü gizleyen CSS */
         body { top: 0 !important; }
         .skiptranslate, .goog-te-banner-frame { display: none !important; }
         .goog-tooltip { display: none !important; }
